@@ -1,0 +1,24 @@
+{
+  "name": "aoc-2024",
+  "version": "1.0.0",
+  "description": "Advent of Code 2024",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glitchassassin/aoc-2024.git"
+  },
+  "author": "Jon Winsley",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/glitchassassin/aoc-2024/issues"
+  },
+  "homepage": "https://github.com/glitchassassin/aoc-2024#readme",
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
