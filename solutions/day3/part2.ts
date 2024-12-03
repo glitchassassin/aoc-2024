@@ -1,14 +1,11 @@
 import fs from "fs";
 
-const input = fs.readFileSync("./input.txt", "utf8");
+const input = fs.readFileSync("./input.txt", "utf8").replace(/\n/g, "");
 
-const results = Array.from(input.matchAll(/(do\(\)|^)([^]*?)(don't\(\)|$)/g))
-  .map(([_, _start, content, _end]) => content.trim())
-  .map((content) =>
-    Array.from(content.matchAll(/mul\((?<first>\d+),(?<second>\d+)\)/g))
-      .map(([_, first, second]) => Number(first) * Number(second))
-      .reduce((acc, curr) => acc + curr, 0)
-  )
+const results = Array.from(
+  input.matchAll(/(?<=(?:do\(\)|^)(?:(?!don't\(\)).)*?)mul\((\d+),(\d+)\)/g)
+)
+  .map(([_, first, second]) => Number(first) * Number(second))
   .reduce((acc, curr) => acc + curr, 0);
 
-console.log(results);
+console.log({ results });
