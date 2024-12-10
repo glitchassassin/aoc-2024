@@ -15,6 +15,10 @@ const OPERATORS = [
   (a: number, b: number) => a * b,
 ];
 
+const cachedPermutations = new Map<
+  number,
+  Array<((a: number, b: number) => number)[]>
+>();
 /**
  * Generate all permutations of the given operators with the given length
  * @param operators - The operators to use
@@ -28,6 +32,11 @@ function permutations(
     return operators.map((operator) => [operator]);
   }
 
+  const cached = cachedPermutations.get(length);
+  if (cached) {
+    return cached;
+  }
+
   const result: Array<((a: number, b: number) => number)[]> = [];
   const subPerms = permutations(operators, length - 1);
 
@@ -37,6 +46,7 @@ function permutations(
     }
   }
 
+  cachedPermutations.set(length, result);
   return result;
 }
 
@@ -49,6 +59,9 @@ function checkTest(test: Test) {
     }
     if (result === test.testValue) {
       return true;
+    }
+    if (result > test.testValue) {
+      return false;
     }
   }
   return false;
