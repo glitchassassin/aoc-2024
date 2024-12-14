@@ -31,6 +31,14 @@ export function mul(a: Coord, n: number) {
   return { x: a.x * n, y: a.y * n };
 }
 
+export function div(a: Coord, n: number) {
+  return { x: a.x / n, y: a.y / n };
+}
+
+export function mod(a: Coord, b: Coord) {
+  return { x: a.x % b.x, y: a.y % b.y };
+}
+
 export function eq(a: Coord, b: Coord) {
   return a.x === b.x && a.y === b.y;
 }
